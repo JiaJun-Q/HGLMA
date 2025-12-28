@@ -41,9 +41,9 @@ Users are required to additionally install the ```cplex``` solver (https://www.i
 - We extracted metabolite features from metabolite SMILES and molecular structures using the pre-trained models ```ChemBERTa``` and ```GraphMVP```, respectively. The pre-generated metabolite features are available at the ([download link](https://drive.google.com/file/d/1-21en06Ds1Bo11ljRYP-1qelxAb91QJb/view?usp=sharing)). 
 - The link to the pre-trained model ```ChemBERTa``` is as follows: https://huggingface.co/seyonec/ChemBERTa-zinc-base-v1
 - The link to the pre-trained model ```GraphMVP``` is as follows: https://github.com/chao1224/GraphMVP
-- If you wang to use ```/HGLMA```, please just download pre-trained node embedding files for all metabolites **`metabolite_emb_2816.pkl`** ([download link](https://drive.google.com/file/d/1-21en06Ds1Bo11ljRYP-1qelxAb91QJb/view?usp=sharing)) and place it in the `data` folder.
-- If you wang to use ```/HGLMA_recovery``` or ```/HGLMA_gapfilling```, download pre-trained node embedding files for all metabolites **`metabolite_emb_2816.pkl`** ([download link](https://drive.google.com/file/d/1-21en06Ds1Bo11ljRYP-1qelxAb91QJb/view?usp=sharing)) and place it in the `data` folder, and download bigg reactions pool files for all metabolites **`bigg_universe.xml`** ([download link](https://drive.google.com/file/d/1jORDo7qQt3pnjS2ZTqmFMrKckzDeZM4c/view?usp=sharing)) and place it in the `data/pools` folder.
-- To run the demonstration, you need to navigate to the corresponding folder first, then type "python3 main.py" in your terminal.
+- If you wang to use ```HGLMA```, please just download pre-trained node embedding files for all metabolites **`metabolite_emb_2816.pkl`** ([download link](https://drive.google.com/file/d/1-21en06Ds1Bo11ljRYP-1qelxAb91QJb/view?usp=sharing)) and place it in the `data` folder.
+- If you wang to use ```HGLMA_recovery``` or ```HGLMA_gapfilling```, download pre-trained node embedding files for all metabolites **`metabolite_emb_2816.pkl`** ([download link](https://drive.google.com/file/d/1-21en06Ds1Bo11ljRYP-1qelxAb91QJb/view?usp=sharing)) and place it in the `data` folder, and download bigg reactions pool files for **`bigg_universe.xml`** ([download link](https://drive.google.com/file/d/1jORDo7qQt3pnjS2ZTqmFMrKckzDeZM4c/view?usp=sharing)) and place it in the `data/pools` folder.
+- To run the code, you need to navigate to the corresponding folder first, then type "python3 main.py" in your terminal.
 
 
 ### Prepare your input files
