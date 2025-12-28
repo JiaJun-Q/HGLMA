@@ -4,15 +4,16 @@
 ```HGLMA``` is a computational framework designed for predicting missing reactions (gap-filling) in genome-scale metabolic models (GEMs). It leverages a combination of a Hypergraph and a multi-head attention mechanism to learn complex dependencies within the metabolite-reaction hypergraph. The framework computes prediction scores for candidate reactions, which are then integrated with a calculated biochemical similarity score for final ranking and selection of reactions to be added to the model.
 
 ## Description
-Here we have three folders: \
+Here we have four folders: \
 ```HGLMA``` is for the evaluation of reaction prediction performance.\
 ```HGLMA_recovery``` is for the evaluation of reaction recovery.\
 ```HGLMA_gapfilling``` is dedicated to the gap-filling of draft GEMs.\
-The ```data``` folder contains all the experimental results and a trained model weight parameters file, which are also available in the supplementary materials.
+```data``` folder contains all the experimental results and a trained model weight parameters file, which are also available in the supplementary materials.
 
 
 ## System Requirements
 ### Dependencies
+The proposed model be implemented and trained by using ```Python 3.8``` and ```PyTorch 2.1.0``` with ```CUDA 12.1``` and an ```NVIDIA 4090``` graphics card.\
 The package depends on the Python scientific stack:
 
 ```
