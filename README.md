@@ -7,8 +7,8 @@
 Here we have three folders: \
 ```HGLMA``` is for the evaluation of reaction prediction performance.\
 ```HGLMA_recovery``` is for the evaluation of reaction recovery.\
-```HGLMA_gapfilling``` is dedicated to the gap-filling of draft GEMs.
-The ```data``` folder contains all the experimental results, which are also available in the supplementary materials.
+```HGLMA_gapfilling``` is dedicated to the gap-filling of draft GEMs.\
+The ```data``` folder contains all the experimental results and a trained model weight parameters file, which are also available in the supplementary materials.
 
 
 ## System Requirements
