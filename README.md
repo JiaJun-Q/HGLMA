@@ -5,10 +5,10 @@
 
 ## Description
 Here we have three folders: \
-```/HGLMA``` is for the evaluation of reaction prediction performance.\
-```/HGLMA_recovery``` is for the evaluation of reaction recovery.\
-```/HGLMA_gapfilling``` is dedicated to the gap-filling of draft GEMs.
-
+```HGLMA``` is for the evaluation of reaction prediction performance.\
+```HGLMA_recovery``` is for the evaluation of reaction recovery.\
+```HGLMA_gapfilling``` is dedicated to the gap-filling of draft GEMs.
+The ```data``` folder contains all the experimental results, which are also available in the supplementary materials.
 
 
 ## System Requirements
@@ -47,12 +47,10 @@ Users are required to additionally install the ```cplex``` solver (https://www.i
 
 **Step 1. Prepare input files** 
 
-All input files should be deposited to the directory ```cheshire-gapfilling/data```. There are three folders:
-
-1. The folder ```/HGLMA_gapfilling/BiGG Models``` contains 1 GEM from Zimmermann et al. as examples. GEM is a xml file.
+1. The folder ```HGLMA_gapfilling/BiGG Models``` contains 1 GEM from Zimmermann et al. as examples. GEM is a xml file.
 
 The draft GEM is derived from: Zimmermann, J., Kaleta, C. & Waschina, S. gapseq: informed prediction of bacterial metabolic pathways and reconstruction of accurate metabolic models. Genome Biol 22, 81 (2021). https://doi.org/10.1186/s13059-021-02295-1
 
-2. The folder ```/HGLMA_gapfilling/data/pools``` need to contain a reaction pool under name ```bigg_universe.xml```. Each pool is a GEM that has the extension ```.xml```. To use your own pool, remember to rename it to ```universe.xml```. Also remember to edit ```EX_SUFFIX``` and ```NAMESPACE``` in the input_parameters.txt to specify the suffix of exchange reactions and which namespace of biochemical reaction database is used. For ```NAMESPACE```, we currently only support ```bigg```.
+2. The folder ```HGLMA_gapfilling/data/pools``` need to contain a reaction pool under name ```bigg_universe.xml```. Each pool is a GEM that has the extension ```.xml```. To use your own pool, remember to rename it to ```universe.xml```. Also remember to edit ```EX_SUFFIX``` and ```NAMESPACE``` in the input_parameters.txt to specify the suffix of exchange reactions and which namespace of biochemical reaction database is used. For ```NAMESPACE```, we currently only support ```bigg```.
 
-The reaction pool is derived from: Chen C, Liao C, Liu Y Y. Teasing out missing reactions in genome-scale metabolic networks through hypergraph learning[J]. Nature Communications, 2023, 14(1): 2375.
+The reaction pool is derived from: Chen C, Liao C, Liu Y Y. Teasing out missing reactions in genome-scale metabolic networks through hypergraph learning. Nature Communications, 2023, 14(1): 2375.
