@@ -32,7 +32,7 @@ matplotlib: 3.3.4
 tqdm: 4.66.5
 rdkit: 2022.3.5
 node2vec: 0.4.6
-openpyxl: 3.1.
+openpyxl: 3.1.5
 ```
 
 Users are required to additionally install the ```cplex``` solver (https://www.ibm.com/analytics/cplex-optimizer) from IBM to run the package. Note that cplex only works with certain python versions (e.g., CPLEX_Studio12.10 has APIs for python3.6 an python3.7).
