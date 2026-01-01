@@ -123,7 +123,7 @@ if __name__ == "__main__":
         df_bigg = pd.read_csv(file_path_bigg)
 
         # Group to get hyperedges
-        edges_pos = df_pos.groupby('hyperedge_id')['node_id'].apply(list).to_list()
+        edges_pos = df_pos.groupby('hyperedge_id')['node_id'].apply(set).to_list()
         edges_neg = df_neg.groupby('hyperedge_id')['node_id'].apply(list).to_list()
         edges_bigg = df_bigg.groupby('hyperedge_id')['node_id'].apply(list).to_list()
 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
                 bottle_neck=bottle_neck).to(device)
 
             # Optimizer collects parameters from both net and classifier
-            params_list = list(set(list(classifier_model.parameters()) + list(net.parameters())))
+            params_list = list(set(list(classifier_model.parameters()) + list(net.modules())))
             optimizer = torch.optim.Adam(params_list, lr=args.lr, weight_decay=args.wd)
 
             g = g.to(device)

@@ -37,7 +37,7 @@ def train_batch_hyperedge(classifier_model, loss_f, batch_edges_pos, batch_edge_
 
     # Forward pass
     pred = classifier_model(x, return_recon=False)
-    pred = pred.squeeze(1)  # Remove the second dimension
+    pred = pred.squeeze(0)  # Remove the second dimension
     loss = loss_f(pred, y, weight=w)
     return pred, y, loss
 
@@ -52,7 +52,7 @@ def train_epoch(args, net, classifier_model, m_emb, g, hg_pos, hg_neg, hg_bigg, 
     max_len = max(len(edge) for edge in edges_pos)
     edges_pos_padded_pos = [edge + [0] * (max_len - len(edge)) for edge in edges_pos]
     edges_pos_padded_neg = [edge + [0] * (max_len - len(edge)) for edge in edges_neg]
-    edges_pos = torch.tensor(edges_pos_padded_pos, dtype=torch.long, device=device)
+    edges_pos = torch.tensor(edges_pos_padded_pos, dtype=torch.float, device=device)
     edges_neg = torch.tensor(edges_pos_padded_neg, dtype=torch.long, device=device)
 
     # Shuffle
@@ -172,7 +172,7 @@ def eval_epoch(args, net, classifier_model, m_emb, g, hg_pos, hg_neg, hg_bigg, l
             batch_w = torch.cat([batch_w_pos, batch_w_neg])
             batch_y = torch.cat([
                 torch.ones(len(batch_x_pos), device=device),
-                torch.zeros(len(batch_x_neg), device=device)])
+                torch.zeros(len(batch_x_pos), device=device)])
 
             index = torch.randperm(len(batch_x))
             batch_x, batch_y, batch_w = batch_x[index], batch_y[index], batch_w[index]
