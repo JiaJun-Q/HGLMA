@@ -37,7 +37,7 @@ def train_batch_hyperedge(classifier_model, loss_f, batch_edges_pos, batch_edge_
 
     # Forward pass
     pred = classifier_model(x, return_recon=False)
-    pred = pred.squeeze(0)  # Remove the second dimension
+    pred = pred.squeeze(1)
     loss = loss_f(pred, y, weight=w)
     return pred, y, loss
 

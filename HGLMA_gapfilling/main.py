@@ -71,7 +71,6 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    set_seed(0)
     device = torch.device("cuda:1" if torch.cuda.is_available() else torch.device('cpu'))
     args = parse_args()
     # Monkey-patch optlang Container to skip duplicate reaction checks

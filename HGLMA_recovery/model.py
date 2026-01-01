@@ -4,8 +4,7 @@ import torch.nn as nn
 import dhg
 from dgl.nn.pytorch.conv import DGNConv
 import numpy as np
-
-device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:0")
 
 class Model(nn.Module):
     def __init__(self, in_channels: int,
@@ -100,8 +99,8 @@ class Classifier(nn.Module):
             self.node_embedding = self.node_embedding.to(args.get('device', 'cuda'))
         elif node_embedding is None:
             n_nodes = metabolite_count
-            self.node_embedding = torch.randn(n_nodes, bottle_neck).to(args.get('device', 'cuda'))
-            self.is_tensor_embedding = True  # Default to tensor
+            self.node_embedding = torch.randn(n_nodes, bottle_neck).half().to(device)
+            self.is_tensor_embedding = True
 
         self.pff_classifier = PositionwiseFeedForward(
             [d_model, 1], reshape=True, use_bias=True)
@@ -458,7 +457,6 @@ class MultiHeadAttention(nn.Module):
 
 
 class EncoderLayer(nn.Module):
-    '''A self-attention layer + 2 layered pff'''
 
     def __init__(
             self,

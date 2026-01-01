@@ -35,8 +35,7 @@ def setup_logging(args):
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
-    log_file = os.path.join(log_dir, f'Multi_2816SMILES_lr{args.lr}_training_log_{time.strftime("%Y%m%d_%H%M%S")}.txt')
-    logger = logging.getLogger()  # root logger
+    logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
@@ -88,7 +87,6 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    set_seed(0)
     device = torch.device("cuda:1") if torch.cuda.is_available() else torch.device('cpu')
     args = parse_args()
 

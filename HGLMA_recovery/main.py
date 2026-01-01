@@ -35,7 +35,6 @@ def setup_logging(args):
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
-    log_file = os.path.join(log_dir, f'GCF_845.2_ALL_TOP{args.top}_recovery_SMILESlr{args.lr}_training_log_{time.strftime("%Y%m%d_%H%M%S")}.txt')
 
     logging.basicConfig(
         level=logging.INFO,
@@ -85,7 +84,6 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    set_seed(0)
     device = torch.device(f"cuda:{args.cuda}") if torch.cuda.is_available() else torch.device('cpu')
     args = parse_args()
     logger = setup_logging(args)
@@ -100,8 +98,7 @@ if __name__ == "__main__":
     )
     bigg_metabolite = set(rxn_pool_df.index)
     bigg_reaction = set(rxn_pool_df.columns)
-
-    xml_files = glob.glob(os.path.join('BiGG Models', '*.xml'))
+    xml_files = glob.glob(os.path.join('bigg models', '*.xml'))
     # Loop through each BiGG model
     for xml_file in xml_files:
         model_name = os.path.splitext(os.path.basename(xml_file))[0]
@@ -123,7 +120,7 @@ if __name__ == "__main__":
         df_bigg = pd.read_csv(file_path_bigg)
 
         # Group to get hyperedges
-        edges_pos = df_pos.groupby('hyperedge_id')['node_id'].apply(set).to_list()
+        edges_pos = df_pos.groupby('hyperedge_id')['node_id'].apply(list).to_list()
         edges_neg = df_neg.groupby('hyperedge_id')['node_id'].apply(list).to_list()
         edges_bigg = df_bigg.groupby('hyperedge_id')['node_id'].apply(list).to_list()
 
@@ -188,7 +185,7 @@ if __name__ == "__main__":
                     metabolite_count, reaction_count, loss_f,
                     training_data=(train_edges_pos_set, train_weight_pos_set, train_edges_neg_set, train_weight_neg_set),
                     validation_data=(valid_edges_pos_set, valid_weight_pos_set, valid_edges_neg_set, valid_weight_neg_set),
-                    optimizer=[optimizer],
+                    optimizer=optimizer,
                     epochs=args.internal_epochs,
                     batch_size=batch_size
                 )
